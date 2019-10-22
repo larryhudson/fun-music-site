@@ -12,7 +12,7 @@ export default () => {
   React.useEffect(() => {
     setLoading(true)
     axios
-      .get("http://ws.audioscrobbler.com/2.0/", {
+      .get("https://ws.audioscrobbler.com/2.0/", {
         params: {
           method: "user.getrecenttracks",
           user: "harryludson",
