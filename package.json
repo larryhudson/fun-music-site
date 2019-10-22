@@ -1,7 +1,7 @@
 {
-  "name": "gatsby-starter-hello-world",
+  "name": "fun-music-site",
   "private": true,
-  "description": "A simplified bare-bones starter for Gatsby",
+  "description": "Playground to play around with different music data sources - Netlify CMS, Spotify, Last.fm etc.",
   "version": "0.1.0",
   "license": "MIT",
   "scripts": {
@@ -22,9 +22,9 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gatsbyjs/gatsby-starter-hello-world"
+    "url": "https://github.com/larryhudson/fun-music-site"
   },
   "bugs": {
-    "url": "https://github.com/gatsbyjs/gatsby/issues"
+    "url": "https://github.com/larryhudson/fun-music-site/issues"
   }
 }
