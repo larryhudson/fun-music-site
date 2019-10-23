@@ -18,7 +18,7 @@ export default () => {
           user: "harryludson",
           api_key: "43c1cbeecc3f5b3e29fa28fb740255bc",
           format: "json",
-          limit: "8",
+          limit: "50",
         },
       })
       .then(response => {
@@ -49,8 +49,11 @@ export default () => {
       </p>
       {loading && <Loading />}
       {error && <Error error={error} />}
+      {tracks.length > 0 && <Albums tracks={tracks} />}
       {tracks.length > 0 && <Tracks tracks={tracks} />}
-      {apiResponse && <pre>{JSON.stringify(apiResponse, null, 4)}</pre>}
+      {apiResponse && (
+        <pre>{JSON.stringify(apiResponse.recenttracks.track, null, 4)}</pre>
+      )}
     </div>
   )
 }
@@ -58,6 +61,35 @@ export default () => {
 const Loading = () => <div>Loading...</div>
 
 const Error = ({ error }) => <div>Error! {error.message}</div>
+
+const Albums = ({ tracks }) => {
+  var albums = []
+  tracks.forEach(track => {
+    console.log(track)
+    const album = track.album
+    const artist = track.artist
+    const image = track.image
+    if (!albums.map(a => a.image).includes(image)) {
+      albums.push({
+        album,
+        artist,
+        image,
+      })
+    }
+  })
+  console.log(albums)
+
+  return (
+    <ol>
+      {albums.map(album => (
+        <li key={album.image}>
+          <img src={album.image} />
+          {album.album} by {album.artist}
+        </li>
+      ))}
+    </ol>
+  )
+}
 
 const Tracks = ({ tracks }) => {
   return (
