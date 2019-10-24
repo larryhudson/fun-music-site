@@ -38,7 +38,6 @@ export default () => {
         setLoading(false)
         setError(error.message)
       })
-    setLoading(false)
   }, [])
   return (
     <div>
@@ -49,8 +48,8 @@ export default () => {
       </p>
       {loading && <Loading />}
       {error && <Error error={error} />}
-      {tracks.length > 0 && <Albums tracks={tracks} />}
-      {tracks.length > 0 && <Tracks tracks={tracks} />}
+      {!loading && tracks.length > 0 && <Albums tracks={tracks} />}
+      {!loading && tracks.length > 0 && <Tracks tracks={tracks} />}
       {apiResponse && (
         <pre>{JSON.stringify(apiResponse.recenttracks.track, null, 4)}</pre>
       )}
@@ -58,7 +57,7 @@ export default () => {
   )
 }
 
-const Loading = () => <div>Loading...</div>
+const Loading = () => <div>Loading data from Last.fm...</div>
 
 const Error = ({ error }) => <div>Error! {error.message}</div>
 
